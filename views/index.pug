@@ -4,11 +4,20 @@ html
   head
     title BrickHack3
 
+    link(rel='stylesheet'
+      href='/public/bower/materialize/dist/js/materialize.min.js')
     link(rel='stylesheet' href='/public/css/styles.css')
 
     script(src='/socket.io/socket.io.js')
+    script(src='/public/bower/jquery/dist/jquery.min.js')
 
   body
+    h1(class='header') PENIS
+    div(class='container')
+      div(class='name-prompt-container')
+        form(class='name-form')
+          input(class='name-input')
+      canvas(id='canvas')
 
     script(src='/shared/Constants.js')
     script(src='/shared/Util.js')

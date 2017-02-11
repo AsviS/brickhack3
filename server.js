@@ -6,19 +6,7 @@ var DEV_MODE = process.argv.indexOf('--dev') != -1;
 var PORT_NUMBER = process.env.PORT || 5000;
 var FRAME_RATE = 1000.0 / 60.0;
 
-/**
- * Sets the DEV_MODE constant for development.
- * Example usage:
- * node server.js --dev
- */
-process.argv.forEach(function(value, index, array) {
-  if (value == '--dev' || value == '--development') {
-    DEV_MODE = true;
-  }
-});
-
 // Dependencies.
-var bodyParser = require('body-parser');
 var express = require('express');
 var http = require('http');
 var morgan = require('morgan');
@@ -33,20 +21,16 @@ var server = http.Server(app);
 var io = socketIO(server);
 var game = new Game();
 
-app.engine('html', swig.renderFile);
-
 app.set('port', PORT_NUMBER);
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
-app.use(morgan(':date[web] :method :url :req[header] :remote-addr :status'));
+app.use(morgan('dev'));
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/shared', express.static(__dirname + '/shared'));
 
 // Routing
 app.get('/', function(request, response) {
-  response.render('index.html', {
-    dev_mode: DEV_MODE
-  });
+  response.render('index');
 });
 
 // Server side input handler, modifies the state of the players and the

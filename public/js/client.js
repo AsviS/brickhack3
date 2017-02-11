@@ -6,41 +6,28 @@
 
 $(document).ready(function() {
   var socket = io();
-  var game = Game.create(socket,
-                         document.getElementById('canvas'),
-                         document.getElementById('leaderboard'));
-  var chat = Chat.create(socket,
-                         document.getElementById('chat-display'),
-                         document.getElementById('chat-input'));
+  var game = Game.create(socket, document.getElementById('canvas'));
 
   Input.applyEventHandlers(document.getElementById('canvas'));
   Input.addMouseTracker(document.getElementById('canvas'));
-  AFK_Kicker.init();
-
-  $('#name-input').focus();
 
   function send_name() {
-    var name = $('#name-input').val();
+    var name = $('.name-input').val().trim();
     if (name && name.length < 20) {
-      $('#name-prompt-container').empty();
-      $('#name-prompt-container').append(
+      $('.name-prompt-container').empty();
+      $('.name-prompt-container').append(
           $('<span>').addClass('fa fa-2x fa-spinner fa-pulse'));
       socket.emit('new-player', {
         name: name
       }, function() {
-        $('#name-prompt-overlay').fadeOut(500);
+        $('.name-prompt-container').fadeOut(500);
         $('#canvas').focus();
         game.animate();
       });
     } else {
-      window.alert('Your name cannot be blank or over 20 characters.');
+      alert('Your name cannot be blank or over 20 characters.');
     }
     return false;
   };
-  $('#name-form').submit(send_name);
-  $('#name-submit').click(send_name);
-
-  setInterval(function() {
-    AFK_Kicker.check();
-  }, 1000);
+  $('.name-form').submit(send_name);
 });
