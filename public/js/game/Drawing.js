@@ -26,6 +26,11 @@ function Drawing(context, images) {
  */
 Drawing.BASE_IMG_URL = '/public/img/';
 
+Drawing.IMG_SRCS = {
+  tile: 'tile.png',
+  player: 'penis.png'
+};
+
 /**
  * @const
  * @type {number}
@@ -54,6 +59,14 @@ Drawing.create = function(context) {
 Drawing.prototype.clear = function() {
   this.context.clearRect(0, 0, Constants.CANVAS_WIDTH,
                          Constants.CANVAS_HEIGHT);
+};
+
+Drawing.prototype.drawPlayer = function(isSelf, coords) {
+  this.context.save();
+  this.context.translate(coords[0], coords[1]);
+  var image = this.images['player'];
+  this.context.drawImage(image, -image.width / 2, -image.height / 2);
+  this.context.restore();
 };
 
 /**
