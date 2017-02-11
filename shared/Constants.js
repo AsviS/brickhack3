@@ -62,6 +62,13 @@ Constants.VISIBILITY_THRESHOLD_X = 425;
  */
 Constants.VISIBILITY_THRESHOLD_Y = 325;
 
+/**
+ * Friction coefficient
+ * @const
+ * @type {number}*/
+
+Constants.FRICTION = .2;
+
 if (typeof module === 'object') {
   /**
    * If Constants is loaded as a Node module, then this line is called.
