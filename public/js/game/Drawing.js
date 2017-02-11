@@ -38,6 +38,8 @@ Drawing.IMG_SRCS = {
  */
 Drawing.TILE_SIZE = 100;
 
+Drawing.NAME_FONT = '25px Ubuntu';
+
 /**
  * Factory method for creating a Drawing object. It initializes all the
  * necessary Image objects.
@@ -62,15 +64,18 @@ Drawing.prototype.clear = function() {
                          Constants.CANVAS_HEIGHT);
 };
 
-Drawing.prototype.drawPlayer = function(isSelf, x, y, size) {
+Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
+  this.context.textAlign = 'center';
+  this.context.font = Drawing.NAME_FONT;
+  this.context.fillText(name, 0, -50);
   var image = this.images['player'];
   this.context.drawImage(image, -size / 2, -size / 2, size, size);
   this.context.restore();
 };
 
-Drawing.prototype.drawBomb = function(x, y, size) {
+Drawing.prototype.drawBomb = function(name, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
   var image = this.images['bomb'];

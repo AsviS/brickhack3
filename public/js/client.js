@@ -24,7 +24,7 @@ $(document).ready(function() {
         $('.loader').hide();
         $('.name-prompt-container').fadeOut(500, function() {
           game.animate();
-          $('#canvas').fadeIn(1500, function() {
+          $('#canvas').fadeIn(500, function() {
             $('#canvas').focus();
           });
         });
@@ -32,6 +32,7 @@ $(document).ready(function() {
     } else {
       Materialize.toast(
           'Your name cannot be blank or over 20 characters.', 4000);
+      $('.loader').hide();
     }
     return false;
   });

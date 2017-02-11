@@ -161,9 +161,19 @@ Game.prototype.draw = function() {
     if (this.self) {
       this.drawing.drawPlayer(
           true,
+          this.self['name'],
           this.viewport.toCanvasX(this.self['x']),
           this.viewport.toCanvasY(this.self['y']),
-          50, 50
+          50
+      );
+    }
+    for (var player of this.players) {
+      this.drawing.drawPlayer(
+          false,
+          this.self['name'],
+          this.viewport.toCanvasX(player['x']),
+          this.viewport.toCanvasY(player['y']),
+          50
       );
     }
     for (var bomb of this.bombs) {
@@ -173,7 +183,5 @@ Game.prototype.draw = function() {
         30
       );
     }
-    // for (var i = 0; i < this.players.length; ++i) {
-    // }
   }
 };
