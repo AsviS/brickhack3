@@ -5,18 +5,28 @@ html
     title BrickHack3
 
     link(rel='stylesheet'
-      href='/public/bower/materialize/dist/js/materialize.min.js')
+      href='/public/bower/materialize/dist/css/materialize.min.css')
     link(rel='stylesheet' href='/public/css/styles.css')
 
     script(src='/socket.io/socket.io.js')
     script(src='/public/bower/jquery/dist/jquery.min.js')
+    script(src='/public/bower/materialize/dist/js/materialize.min.js')
 
   body
-    h1(class='header') PENIS
-    div(class='container')
+    h1(class='title') PENIS
+    div(class='game-container')
       div(class='name-prompt-container')
-        form(class='name-form')
-          input(class='name-input')
+        div(class='container')
+          form(class='name-form')
+            input(class='name-input' placeholder='Player Name')
+          div(class='loader preloader-wrapper big active')
+            div(class='spinner-layer spinner-blue-only')
+              div(class='circle-clipper left')
+                div(class='circle')
+              div(class='gap-patch')
+                div(class='cirlce')
+              div(class='circle-clipper right')
+                div(class='circle')
       canvas(id='canvas')
 
     script(src='/shared/Constants.js')

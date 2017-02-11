@@ -11,12 +11,11 @@ $(document).ready(function() {
   Input.applyEventHandlers(document.getElementById('canvas'));
   Input.addMouseTracker(document.getElementById('canvas'));
 
-  function send_name() {
+  $('.loader').hide();
+  $('.name-form').submit(function() {
+    $('.loader').show();
     var name = $('.name-input').val().trim();
     if (name && name.length < 20) {
-      $('.name-prompt-container').empty();
-      $('.name-prompt-container').append(
-          $('<span>').addClass('fa fa-2x fa-spinner fa-pulse'));
       socket.emit('new-player', {
         name: name
       }, function() {
@@ -28,6 +27,5 @@ $(document).ready(function() {
       alert('Your name cannot be blank or over 20 characters.');
     }
     return false;
-  };
-  $('.name-form').submit(send_name);
+  });
 });
