@@ -59,7 +59,4 @@ the same time.
   - Document any code that you write using Google's JSDOC conventions.
 
 # Creators:
-  - Alvin Lin (omgimanerd)
-  - Kenneth Li (noobbyte)
 
-&copy; 2015 Penumbra Games
