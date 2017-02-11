@@ -66,7 +66,7 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, size) {
   this.context.translate(x, y);
   var image = this.images['player'];
   this.context.drawImage(
-      image, -image.width / 2, -image.height / 2, size, size);
+      image, -size / 2, -size / 2, size, size);
   this.context.restore();
 };
 
