@@ -114,7 +114,8 @@ Game.prototype.update = function() {
         down: Input.DOWN,
         left: Input.LEFT
       },
-      shot: Input.LEFT_CLICK,
+      mouse: Input.MOUSE,
+      click: Input.LEFT_CLICK,
       timestamp: (new Date()).getTime()
     };
     this.socket.emit('player-action', packet);
