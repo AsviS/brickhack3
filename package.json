@@ -6,6 +6,7 @@
   "dependencies": {
     "bower": "^1.8.0",
     "express": "^4.14.0",
+    "incheon": "^0.9.3",
     "morgan": "^1.8.1",
     "pug": "^2.0.0-beta11",
     "query-string": "^4.2.3",

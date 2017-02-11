@@ -25,10 +25,9 @@ server.listen(PORT, function() {
 });
 
 // Game Server
-const MyServerEngine = require(path.join(__dirname, 'src/server/MyServerEngine.js'));
-const MyGameEngine = require(path.join(__dirname, 'src/common/MyGameEngine.js'));
+const MyServerEngine = require('./src/server/MyServerEngine.js');
+const MyGameEngine = require('./src/common/MyGameEngine.js');
 const SimplePhysicsEngine = require('incheon').physics.SimplePhysicsEngine;
-
 // Game Instances
 const physicsEngine = new SimplePhysicsEngine();
 const gameEngine = new MyGameEngine({ physicsEngine, traceLevel: 1 });
