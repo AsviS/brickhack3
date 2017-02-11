@@ -14,7 +14,7 @@ var server = http.Server(app);
 var io = socketIO(server);
 
 app.set('port', PORT);
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
 
 app.use(morgan(':dev'));
 app.use('/public', express.static(__dirname + '/public'));
