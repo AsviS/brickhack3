@@ -2,6 +2,7 @@
  * This class facilitates the tracking of user input, such as mouse clicks
  * and button presses.
  * @author alvin.lin.dev@gmail.com (Alvin Lin)
+ * @version 2.0.0
  */
 
 /**
