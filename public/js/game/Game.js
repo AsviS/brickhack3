@@ -159,7 +159,9 @@ Game.prototype.draw = function() {
     //     this.viewport.toCanvasY(drawEndY)
     // );
 
+    console.log(players);
     if (this.self) {
+      // this.drawing.drawPlayer(true)
     }
     for (var i = 0; i < this.players.length; ++i) {
     }
