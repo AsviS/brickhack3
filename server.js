@@ -1,18 +1,27 @@
-'use strict';
+/**
+ * Server app script.
+ */
+
+const PORT = process.env.PORT || 5000;
 
 const express = require('express');
+const http = require('http');
 const socketIO = require('socket.io');
 const path = require('path');
 
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, './index.html');
+var app = express();
+var server = http.Server(app);
+var io = socketIO(server);
 
-// define routes and socket
-const server = express();
-server.get('/', function(req, res) { res.sendFile(INDEX); });
-server.use('/', express.static(path.join(__dirname, '.')));
-let requestHandler = server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-const io = socketIO(requestHandler);
+app.set('port', PORT);
+app.set('view engine', 'html');
+
+app.use(morgan(':dev'));
+app.use('/public', express.static(__dirname + '/public'));
+
+server.list(PORT, function() {
+  console.log(`LISTENING ON PORT ${PORT}`);
+});
 
 // Game Server
 const MyServerEngine = require(path.join(__dirname, 'src/server/MyServerEngine.js'));
