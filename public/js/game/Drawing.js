@@ -48,7 +48,7 @@ Drawing.create = function(context) {
   var images = {};
   for (var key in Drawing.IMG_SRCS) {
     images[key] = new Image();
-    images[key].src = Drawing.IMG_SRCS[key];
+    images[key].src = Drawing.BASE_IMG_URL + Drawing.IMG_SRCS[key];
   }
   return new Drawing(context, images);
 };
@@ -61,9 +61,9 @@ Drawing.prototype.clear = function() {
                          Constants.CANVAS_HEIGHT);
 };
 
-Drawing.prototype.drawPlayer = function(isSelf, coords) {
+Drawing.prototype.drawPlayer = function(isSelf, x, y) {
   this.context.save();
-  this.context.translate(coords[0], coords[1]);
+  this.context.translate(x, y);
   var image = this.images['player'];
   this.context.drawImage(image, -image.width / 2, -image.height / 2);
   this.context.restore();

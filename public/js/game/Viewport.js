@@ -9,7 +9,7 @@
  * @constructor
  */
 function Viewport() {
-  this.selfCoords = [];
+  this.selfCoords = [0, 0];
 }
 
 /**
