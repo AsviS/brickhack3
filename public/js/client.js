@@ -23,9 +23,10 @@ $(document).ready(function() {
       }, function() {
         $('.loader').hide();
         $('.name-prompt-container').fadeOut(500, function() {
-          $('#canvas').focus();
-          $('#canvas').fadeIn(1500);
           game.animate();
+          $('#canvas').fadeIn(1500, function() {
+            $('#canvas').focus();
+          });
         });
       });
     } else {

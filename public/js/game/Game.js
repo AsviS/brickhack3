@@ -70,6 +70,7 @@ Game.prototype.init = function() {
 Game.prototype.receiveGameState = function(state) {
   this.self = state['self'];
   this.players = state['players'];
+  this.bombs = state['bombs'];
 };
 
 /**
@@ -165,11 +166,13 @@ Game.prototype.draw = function() {
           50, 50
       );
     }
-    this.drawing.drawBomb(
-      this.viewport.toCanvasX(100),
-      this.viewport.toCanvasY(100),
-      30
-    );
+    for (var bomb of this.bombs) {
+      this.drawing.drawBomb(
+        this.viewport.toCanvasX(bomb['x']),
+        this.viewport.toCanvasY(bomb['y']),
+        30
+      );
+    }
     // for (var i = 0; i < this.players.length; ++i) {
     // }
   }
