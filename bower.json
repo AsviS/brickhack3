@@ -1,18 +1,14 @@
 {
-  "name": "brickhack3",
-  "description": "BrickHack3 game submission",
-  "main": "server.js",
+  "name": "tankanarchy",
+  "version": "3.0.0",
+  "homepage": "http://tankanarchy.herokuapp.com",
   "authors": [
-    "people"
+    "Alvin Lin <omgimanerd>",
+    "Kenneth Li <noobbyte>"
   ],
+  "description": "A multiplayer tank battle arena game",
+  "main": "server.js",
   "license": "MIT",
-  "keywords": [
-    "game",
-    "multiplayer",
-    "websockets"
-  ],
-  "homepage": "https://github.com/karlcoelho/brickhack3",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -21,6 +17,8 @@
     "tests"
   ],
   "dependencies": {
-    "materialize": "^0.98.0"
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4",
+    "font-awesome": "fontawesome#~4.4.0"
   }
 }
