@@ -105,8 +105,6 @@ Game.prototype.run = function() {
 Game.prototype.update = function() {
   if (this.self) {
     this.viewport.update(this.self['x'], this.self['y']);
-    // Emits an event for the containing the player's intention to move
-    // or shoot to the server.
     var packet = {
       keyboardState: {
         up: Input.UP,
@@ -114,7 +112,7 @@ Game.prototype.update = function() {
         down: Input.DOWN,
         left: Input.LEFT
       },
-      mouse: Input.MOUSE,
+      mouse: this.viewport.toWorldCoords.apply(null, Input.MOUSE),
       click: Input.LEFT_CLICK,
       timestamp: (new Date()).getTime()
     };

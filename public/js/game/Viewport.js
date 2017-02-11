@@ -36,7 +36,7 @@ Viewport.prototype.update = function(x, y) {
  * @return {number}
  */
 Viewport.prototype.toCanvasX = function(x) {
-  return x - (this.selfCoords[0] - Constants.CANVAS_WIDTH / 2);
+  return x - this.selfCoords[0] + (Constants.CANVAS_WIDTH / 2);
 };
 
 /**
@@ -46,20 +46,21 @@ Viewport.prototype.toCanvasX = function(x) {
  * @return {number}
  */
 Viewport.prototype.toCanvasY = function(y) {
-  return y - (this.selfCoords[1] - Constants.CANVAS_HEIGHT / 2);
+  return y - this.selfCoords[1] + (Constants.CANVAS_HEIGHT / 2);
 };
 
-/**
- * Given an object, returns an array containing the object's converted
- * coordinates. The object must be a valid data structure sent by the
- * server with an x and y attribute.
- * @param {Object} object The object whose converted coords should be
- *   returned.
- * @return {Array.<number>}
- */
-Viewport.prototype.toCanvasCoords = function(object) {
-  var translateX = this.selfCoords[0] - Constants.CANVAS_WIDTH / 2;
-  var translateY = this.selfCoords[1] - Constants.CANVAS_HEIGHT / 2;
-  return [object.x - translateX,
-          object.y - translateY];
+Viewport.prototype.toCanvasCoords = function(x, y) {
+  return [this.toCanvasX(x), this.toCanvasY(y)];
+};
+
+Viewport.prototype.toWorldX = function(x) {
+  return x + this.selfCoords[0] - (Constants.CANVAS_WIDTH / 2);
+};
+
+Viewport.prototype.toWorldY = function(y) {
+  return y + this.selfCoords[1] - (Constants.CANVAS_HEIGHT / 2);
+};
+
+Viewport.prototype.toWorldCoords = function(x, y) {
+  return [this.toWorldX(x), this.toWorldY(y)];
 };
