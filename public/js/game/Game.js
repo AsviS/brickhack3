@@ -165,7 +165,12 @@ Game.prototype.draw = function() {
           50, 50
       );
     }
-    for (var i = 0; i < this.players.length; ++i) {
-    }
+    this.drawing.drawBomb(
+      this.viewport.toCanvasX(100),
+      this.viewport.toCanvasY(100),
+      30
+    );
+    // for (var i = 0; i < this.players.length; ++i) {
+    // }
   }
 };

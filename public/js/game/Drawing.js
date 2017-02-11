@@ -28,7 +28,8 @@ Drawing.BASE_IMG_URL = '/public/img/';
 
 Drawing.IMG_SRCS = {
   tile: 'tile.png',
-  player: 'penis.png'
+  player: 'terrorist.png',
+  bomb: 'bomb.png'
 };
 
 /**
@@ -65,8 +66,15 @@ Drawing.prototype.drawPlayer = function(isSelf, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
   var image = this.images['player'];
-  this.context.drawImage(
-      image, -size / 2, -size / 2, size, size);
+  this.context.drawImage(image, -size / 2, -size / 2, size, size);
+  this.context.restore();
+};
+
+Drawing.prototype.drawBomb = function(x, y, size) {
+  this.context.save();
+  this.context.translate(x, y);
+  var image = this.images['bomb'];
+  this.context.drawImage(image, -size / 2, -size / 2, size, size);
   this.context.restore();
 };
 
