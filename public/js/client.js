@@ -12,6 +12,8 @@ $(document).ready(function() {
   Input.addMouseTracker(document.getElementById('canvas'));
 
   $('.loader').hide();
+  $('#canvas').hide();
+  $('.name-input').focus();
   $('.name-form').submit(function() {
     $('.loader').show();
     var name = $('.name-input').val().trim();
@@ -19,12 +21,16 @@ $(document).ready(function() {
       socket.emit('new-player', {
         name: name
       }, function() {
-        $('.name-prompt-container').fadeOut(500);
-        $('#canvas').focus();
-        game.animate();
+        $('.loader').hide();
+        $('.name-prompt-container').fadeOut(500, function() {
+          $('#canvas').focus();
+          $('#canvas').fadeIn(1500);
+          game.animate();
+        });
       });
     } else {
-      alert('Your name cannot be blank or over 20 characters.');
+      Materialize.toast(
+          'Your name cannot be blank or over 20 characters.', 4000);
     }
     return false;
   });

@@ -21,6 +21,7 @@ html, body {
   width: 810px;
   height: 610px;
   border: 5px solid black;
+  background-color: white;
   margin: auto;
 }
 
