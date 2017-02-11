@@ -39,16 +39,14 @@ app.get('/', function(request, response) {
 io.on('connection', function(socket) {
   // When a new player joins, the server adds a new player to the game.
   socket.on('new-player', function(data, callback) {
-    // game.addNewPlayer(data.name, socket);
-    // setTimeout(function() {
-    //   callback();
-    // }, 5000);
+    game.addNewPlayer(data.name, socket);
+    callback();
   });
 
   // Update the internal object states every time a player sends an intent
   // packet.
   socket.on('player-action', function(data) {
-    game.updatePlayer(socket.id);
+    game.updatePlayer(socket.id, data);
   });
 
   // When a player disconnects, remove them from the game.
