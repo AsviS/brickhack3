@@ -8,7 +8,7 @@ class MyClientEngine extends ClientEngine {
 
         // initialize renderer
         this.renderer = new MyRenderer(gameEngine);
-        this.serializer.registerClass(require('../common/PlayerAvatar'));
+        this.serializer.registerClass(require('../common/Player'));
         this.gameEngine.on('client.preStep', this.preStep.bind(this));
 
         // keep a reference for key press state
