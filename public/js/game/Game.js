@@ -47,7 +47,8 @@ Game.create = function(socket, canvasElement) {
   var drawing = Drawing.create(canvasContext);
   var viewport = Viewport.create();
 
-  var game = new Game(socket, drawing, viewport).init();
+  var game = new Game(socket, drawing, viewport);
+  game.init();
   return game;
 };
 
@@ -58,7 +59,6 @@ Game.prototype.init = function() {
   this.socket.on('update', bind(this, function(data) {
     this.receiveGameState(data);
   }));
-  return this;
 };
 
 /**
@@ -68,8 +68,6 @@ Game.prototype.init = function() {
  *   the server.
  */
 Game.prototype.receiveGameState = function(state) {
-  this.leaderboard.update(state['leaderboard']);
-
   this.self = state['self'];
   this.players = state['players'];
 };
@@ -112,7 +110,7 @@ Game.prototype.update = function() {
         down: Input.DOWN,
         left: Input.LEFT
       },
-      mouse: this.viewport.toWorldCoords.apply(null, Input.MOUSE),
+      mouse: this.viewport.toWorldCoords.apply(this.viewport, Input.MOUSE),
       click: Input.LEFT_CLICK,
       timestamp: (new Date()).getTime()
     };
@@ -152,16 +150,19 @@ Game.prototype.draw = function() {
     var drawEndY = Math.min(
         drawStartY + Constants.CANVAS_HEIGHT + Drawing.TILE_SIZE,
         Constants.WORLD_MAX);
-    // this.drawing.drawTiles(
-    //     this.viewport.toCanvasX(drawStartX),
-    //     this.viewport.toCanvasY(drawStartY),
-    //     this.viewport.toCanvasX(drawEndX),
-    //     this.viewport.toCanvasY(drawEndY)
-    // );
+    this.drawing.drawTiles(
+        this.viewport.toCanvasX(drawStartX),
+        this.viewport.toCanvasY(drawStartY),
+        this.viewport.toCanvasX(drawEndX),
+        this.viewport.toCanvasY(drawEndY)
+    );
 
-    console.log(players);
     if (this.self) {
-      // this.drawing.drawPlayer(true)
+      this.drawing.drawPlayer(
+          true,
+          this.viewport.toCanvasX(this.self['x']),
+          this.viewport.toCanvasY(this.self['y'])
+      );
     }
     for (var i = 0; i < this.players.length; ++i) {
     }
