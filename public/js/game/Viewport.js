@@ -1,6 +1,5 @@
 /**
  * Manages the player viewport when they move around.
- * @author kennethli.3470@gmail.com (Kenneth Li)
  */
 
 /**
@@ -9,16 +8,16 @@
  * coordinates to appropriate canvas coordinates.
  * @constructor
  */
-function ViewPort() {
+function Viewport() {
   this.selfCoords = [];
 }
 
 /**
- * Factory method for a ViewPort class.
- * @return {ViewPort}
+ * Factory method for a Viewport class.
+ * @return {Viewport}
  */
-ViewPort.create = function() {
-  return new ViewPort();
+Viewport.create = function() {
+  return new Viewport();
 };
 
 /**
@@ -26,7 +25,7 @@ ViewPort.create = function() {
  * @param {number} x The absolute x coordinate of the player.
  * @param {number} y The absolute y coordinate of the player.
  */
-ViewPort.prototype.update = function(x, y) {
+Viewport.prototype.update = function(x, y) {
   this.selfCoords = [x, y];
 };
 
@@ -36,7 +35,7 @@ ViewPort.prototype.update = function(x, y) {
  * @param {number} x The absolute world x coordinate to convert.
  * @return {number}
  */
-ViewPort.prototype.toCanvasX = function(x) {
+Viewport.prototype.toCanvasX = function(x) {
   return x - (this.selfCoords[0] - Constants.CANVAS_WIDTH / 2);
 };
 
@@ -46,7 +45,7 @@ ViewPort.prototype.toCanvasX = function(x) {
  * @param {number} y The absolute world y coordinate to convert.
  * @return {number}
  */
-ViewPort.prototype.toCanvasY = function(y) {
+Viewport.prototype.toCanvasY = function(y) {
   return y - (this.selfCoords[1] - Constants.CANVAS_HEIGHT / 2);
 };
 
@@ -58,7 +57,7 @@ ViewPort.prototype.toCanvasY = function(y) {
  *   returned.
  * @return {Array.<number>}
  */
-ViewPort.prototype.toCanvasCoords = function(object) {
+Viewport.prototype.toCanvasCoords = function(object) {
   var translateX = this.selfCoords[0] - Constants.CANVAS_WIDTH / 2;
   var translateY = this.selfCoords[1] - Constants.CANVAS_HEIGHT / 2;
   return [object.x - translateX,
