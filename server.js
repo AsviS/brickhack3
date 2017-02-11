@@ -20,7 +20,7 @@ app.set('view engine', 'pug');
 app.use(morgan(':dev'));
 app.use('/public', express.static(__dirname + '/public'));
 
-server.list(PORT, function() {
+server.listen(PORT, function() {
   console.log(`LISTENING ON PORT ${PORT}`);
 });
 
