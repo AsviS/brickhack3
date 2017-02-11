@@ -6,7 +6,7 @@
 
 module.exports = {
   GULPFILE_VERSION: "3.1.0",
-  DEFAULT_TASKS: ['js', 'less', 'test'],
+  DEFAULT_TASKS: ['js-lint'],
   JS_LINT_RULES: [
     {
       name: 'server side javascript',
@@ -27,21 +27,5 @@ module.exports = {
         './shared/*.js'
       ]
     }
-  ],
-  LESS_BUILD_RULES: [
-    {
-      name: 'default stylesheet',
-      sourceFiles: [
-        './public/less/styles.less'
-      ],
-      outputDirectory: './public/dist',
-      outputFile: 'minified.css'
-    }
-  ],
-  CLEAN_PROJECT_PATHS: [
-    './public/dist/*'
-  ],
-  JASMINE_TEST_PATHS: [
-    './tests/*'
   ]
 };
