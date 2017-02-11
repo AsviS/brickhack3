@@ -2,7 +2,7 @@
 
 const DynamicObject= require('incheon').serialize.DynamicObject;
 
-class PlayerAvatar extends DynamicObject {
+class Player extends DynamicObject {
 
     static get netScheme() {
         return Object.assign({}, super.netScheme);
@@ -10,8 +10,8 @@ class PlayerAvatar extends DynamicObject {
 
     constructor(id, x, y) {
         super(id, x, y);
-        this.class = PlayerAvatar;
+        this.class = Player;
     };
 }
 
-module.exports = PlayerAvatar;
+module.exports = Player;
