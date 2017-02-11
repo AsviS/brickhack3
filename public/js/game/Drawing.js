@@ -61,11 +61,12 @@ Drawing.prototype.clear = function() {
                          Constants.CANVAS_HEIGHT);
 };
 
-Drawing.prototype.drawPlayer = function(isSelf, x, y) {
+Drawing.prototype.drawPlayer = function(isSelf, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
   var image = this.images['player'];
-  this.context.drawImage(image, -image.width / 2, -image.height / 2);
+  this.context.drawImage(
+      image, -image.width / 2, -image.height / 2, size, size);
   this.context.restore();
 };
 

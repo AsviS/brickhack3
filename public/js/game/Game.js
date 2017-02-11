@@ -161,7 +161,8 @@ Game.prototype.draw = function() {
       this.drawing.drawPlayer(
           true,
           this.viewport.toCanvasX(this.self['x']),
-          this.viewport.toCanvasY(this.self['y'])
+          this.viewport.toCanvasY(this.self['y']),
+          50, 50
       );
     }
     for (var i = 0; i < this.players.length; ++i) {
