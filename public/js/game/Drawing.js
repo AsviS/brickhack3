@@ -114,14 +114,25 @@ Drawing.prototype.clear = function() {
  * @param {number} size The size of the player, corresponds to their radial
  *   hitbox
  */
-Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation) {
+Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
+                                        health) {
   this.context.save();
   this.context.translate(x, y);
-  this.context.rotate(orientation + Math.PI / 2);
+  for (var i = 0; i < 10; i++) {
+    if (i < health) {
+      this.context.fillStyle = 'green';
+      this.context.fillRect(-25 + 5 * i, -size, 5, 4);
+    } else {
+      this.context.fillStyle = 'red';
+      this.context.fillRect(-25 + 5 * i, -size, 5, 4);
+    }
+  }
   this.context.textAlign = 'center';
   this.context.font = Drawing.NAME_FONT;
   this.context.fillStyle = Drawing.NAME_COLOR;
   this.context.fillText(name, 0, -50);
+  
+  this.context.rotate(orientation + Math.PI / 2);
   var image = this.images['player'];
   this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.restore();
