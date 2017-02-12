@@ -52,30 +52,6 @@ Drawing.IMG_SRCS = {
 Drawing.TILE_SIZE = 100;
 
 /**
- * @const
- * @type {string}
- */
-Drawing.NAME_FONT = '25px Ubuntu';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.NAME_COLOR = 'black';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.BOMB_FONT = '20px Ubuntu';
-
-/**
- * @const
- * @type {string}
- */
-Drawing.BOMB_COLOR = '#c62828';
-
-/**
  * Factory method for creating a Drawing object. It initializes all the
  * necessary Image objects.
  * @param {CanvasRenderingContext2D} context The context this object will
@@ -117,7 +93,7 @@ Drawing.prototype.clear = function() {
  *   hitbox
  */
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
-                                        health) {
+                                        health, bombFuse) {
   if (health <= 0) {
     this.context.save();
     this.context.translate(x, y);
@@ -134,6 +110,10 @@ Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
       var image = this.images['otherPlayer'];
     }
     this.context.drawImage(image, -size, -size, size * 2, size * 2);
+    this.context.textAlign = 'center';
+    this.context.font = '18px Ubuntu';
+    this.context.fillStyle = 'red';
+    this.context.fillText(bombFuse, -35, -4);
     this.context.restore();
   }
   this.context.save();
@@ -148,8 +128,8 @@ Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
     }
   }
   this.context.textAlign = 'center';
-  this.context.font = Drawing.NAME_FONT;
-  this.context.fillStyle = Drawing.NAME_COLOR;
+  this.context.font = '25px Ubuntu';
+  this.context.fillStyle = 'black';
   this.context.fillText(name, 0, -60);
   this.context.restore();
 
@@ -161,8 +141,8 @@ Drawing.prototype.drawBomb = function(x, y, size, timer) {
   var image = this.images['bomb'];
   this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.textAlign = 'center';
-  this.context.font = Drawing.BOMB_FONT;
-  this.context.fillStyle = Drawing.BOMB_COLOR;
+  this.context.font = '20px Ubuntu';
+  this.context.fillStyle = 'red';
   this.context.fillText(Math.ceil(timer), 0, 0);
   this.context.restore();
 };

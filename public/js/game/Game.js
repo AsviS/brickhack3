@@ -168,7 +168,8 @@ Game.prototype.draw = function() {
           this.viewport.toCanvasY(this.self['y']),
           this.self['size'],
           this.self['orientation'],
-          this.self['health']
+          this.self['health'],
+          this.self['bombFuse']
       );
     }
     for (var player of this.players) {
