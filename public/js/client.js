@@ -14,6 +14,10 @@ $(document).ready(function() {
   $('.loader').hide();
   $('#canvas').hide();
   $('.name-input').focus();
+  // for testing purposes
+  $('.name-input').val('test');
+  $('.name-input').trigger('submit');
+  // test end
   $('.name-form').submit(function() {
     $('.loader').show();
     var name = $('.name-input').val().trim();
