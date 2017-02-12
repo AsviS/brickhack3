@@ -135,7 +135,7 @@ Drawing.prototype.drawBomb = function(x, y, size, timer) {
   this.context.textAlign = 'center';
   this.context.font = Drawing.BOMB_FONT;
   this.context.fillStyle = Drawing.BOMB_COLOR;
-  this.context.fillText(timer, 0, 0);
+  this.context.fillText(Math.ceil(timer), 0, 0);
   this.context.restore();
 };
 
