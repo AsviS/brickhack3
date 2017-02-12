@@ -104,7 +104,7 @@ Game.prototype.run = function() {
  */
 Game.prototype.update = function() {
   if (this.self) {
-    this.viewport.update(this.self['x'], this.self['y']);
+    this.viewport.update.apply(this.viewport, this.self.position);
     var packet = {
       keyboardState: {
         up: Input.UP,
@@ -135,8 +135,8 @@ Game.prototype.draw = function() {
      * so that the entire ViewPort is appropriately filled.
      */
     var center = this.viewport.selfCoords;
-    var leftX = this.self['x'] - Constants.CANVAS_WIDTH / 2;
-    var topY = this.self['y'] - Constants.CANVAS_HEIGHT / 2;
+    var leftX = this.self.position[0] - Constants.CANVAS_WIDTH / 2;
+    var topY = this.self.position[0] - Constants.CANVAS_HEIGHT / 2;
     var drawStartX = Math.max(
         leftX - (leftX % Drawing.TILE_SIZE), Constants.WORLD_MIN);
     var drawStartY = Math.max(
@@ -162,8 +162,8 @@ Game.prototype.draw = function() {
       this.drawing.drawPlayer(
           true,
           this.self['name'],
-          this.viewport.toCanvasX(this.self['x']),
-          this.viewport.toCanvasY(this.self['y']),
+          this.viewport.toCanvasX(this.self['position'][0]),
+          this.viewport.toCanvasY(this.self['position'][1]),
           this.self['size'],
           this.self['orientation']
       );
@@ -172,23 +172,23 @@ Game.prototype.draw = function() {
       this.drawing.drawPlayer(
           false,
           this.self['name'],
-          this.viewport.toCanvasX(player['x']),
-          this.viewport.toCanvasY(player['y']),
+          this.viewport.toCanvasX(player['position'][0]),
+          this.viewport.toCanvasY(player['position'][0]),
           player['size'],
           player['orientation']
       );
     }
     for (var bomb of this.bombs) {
       this.drawing.drawBomb(
-          this.viewport.toCanvasX(bomb['x']),
-          this.viewport.toCanvasY(bomb['y']),
+          this.viewport.toCanvasX(bomb['position'][0]),
+          this.viewport.toCanvasY(bomb['position'][1]),
           bomb['size']
       );
     }
     for (var explosion of this.explosions) {
       this.drawing.drawExplosion(
-          this.viewport.toCanvasX(explosion['x']),
-          this.viewport.toCanvasY(explosion['y']),
+          this.viewport.toCanvasX(explosion['position'][0]),
+          this.viewport.toCanvasY(explosion['position'][1]),
           explosion['size'],
           explosion['frame']
       )
