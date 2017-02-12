@@ -117,34 +117,33 @@ Drawing.prototype.clear = function() {
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
-
   this.context.textAlign = 'center';
   this.context.font = Drawing.NAME_FONT;
   this.context.fillStyle = Drawing.NAME_COLOR;
   this.context.fillText(name, 0, -50);
-
   var image = this.images['player'];
-  this.context.drawImage(image, -size / 2, -size / 2, size, size);
+  this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.restore();
 };
 
 Drawing.prototype.drawBomb = function(x, y, size, timer) {
   this.context.save();
   this.context.translate(x, y);
-
   this.context.textAlign = 'center';
   this.context.font = Drawing.BOMB_FONT;
   this.context.fillStyle = Drawing.BOMB_COLOR;
   this.context.fillText(timer, 0, 0);
-
   var image = this.images['bomb'];
-  this.context.drawImage(image, -size / 2, -size / 2, size, size);
+  this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.restore();
 };
 
 Drawing.prototype.drawExplosion = function(x, y, size, frame) {
+  this.context.save();
+  this.context.translate(x, y);
   var image = this.images['explosion'][frame];
-  this.context.drawImage(image, x, y, size, size);
+  this.context.drawImage(image, -size, -size, size * 2, size * 2);
+  this.context.restore();
 };
 
 /**

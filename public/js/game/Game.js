@@ -179,10 +179,18 @@ Game.prototype.draw = function() {
     }
     for (var bomb of this.bombs) {
       this.drawing.drawBomb(
-        this.viewport.toCanvasX(bomb['x']),
-        this.viewport.toCanvasY(bomb['y']),
-        30
+          this.viewport.toCanvasX(bomb['x']),
+          this.viewport.toCanvasY(bomb['y']),
+          bomb['size']
       );
+    }
+    for (var explosion of this.explosions) {
+      this.drawing.drawExplosion(
+          this.viewport.toCanvasX(explosion['x']),
+          this.viewport.toCanvasY(explosion['y']),
+          explosion['size'],
+          explosion['frame']
+      )
     }
   }
 };
