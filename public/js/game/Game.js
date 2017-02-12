@@ -158,14 +158,14 @@ Game.prototype.draw = function() {
         this.viewport.toCanvasX(drawEndX),
         this.viewport.toCanvasY(drawEndY)
     );
-
     if (this.self) {
       this.drawing.drawPlayer(
           true,
           this.self['name'],
           this.viewport.toCanvasX(this.self['x']),
           this.viewport.toCanvasY(this.self['y']),
-          this.self['size']
+          this.self['size'],
+          this.self['orientation']
       );
     }
     for (var player of this.players) {
@@ -174,7 +174,8 @@ Game.prototype.draw = function() {
           this.self['name'],
           this.viewport.toCanvasX(player['x']),
           this.viewport.toCanvasY(player['y']),
-          player['size']
+          player['size'],
+          player['orientation']
       );
     }
     for (var bomb of this.bombs) {

@@ -39,5 +39,6 @@ $(document).ready(function() {
     }
     return false;
   });
+  // testing purposes
   $('.name-form').trigger('submit');
 });

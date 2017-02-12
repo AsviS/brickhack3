@@ -114,9 +114,10 @@ Drawing.prototype.clear = function() {
  * @param {number} size The size of the player, corresponds to their radial
  *   hitbox
  */
-Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
+Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation) {
   this.context.save();
   this.context.translate(x, y);
+  this.context.rotate(orientation + Math.PI / 2);
   this.context.textAlign = 'center';
   this.context.font = Drawing.NAME_FONT;
   this.context.fillStyle = Drawing.NAME_COLOR;
