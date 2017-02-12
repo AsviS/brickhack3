@@ -17,7 +17,7 @@ Sound.SOUND_SRCS = {
   ],
   explosion: [
     'explosion1.wav',
-    'explosion2.mp3'
+    'explosion2.wav'
   ],
   death: [
     'death1.mp3'
