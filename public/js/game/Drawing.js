@@ -113,7 +113,7 @@ Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
     this.context.textAlign = 'center';
     this.context.font = '18px Ubuntu';
     this.context.fillStyle = 'red';
-    this.context.fillText(bombFuse, 35, 15);
+    this.context.fillText(bombFuse, 33, 12);
     this.context.restore();
   }
   this.context.save();
