@@ -29,6 +29,7 @@ function Game(socket, drawing, viewport) {
    * @type {Array<Object>}
    */
   this.explosions = [];
+  this.leaderboard = [];
 
   this.animationFrameId = 0;
 }
@@ -72,6 +73,7 @@ Game.prototype.receiveGameState = function(state) {
   this.players = state['players'];
   this.bombs = state['bombs'];
   this.explosions = state['explosions'];
+  this.leaderboard = state['leaderboard'];
 };
 
 /**
@@ -160,6 +162,14 @@ Game.prototype.draw = function() {
         this.viewport.toCanvasX(drawEndX),
         this.viewport.toCanvasY(drawEndY)
     );
+    for (var bomb of this.bombs) {
+      this.drawing.drawBomb(
+          this.viewport.toCanvasX(bomb['x']),
+          this.viewport.toCanvasY(bomb['y']),
+          bomb['size'],
+          bomb['fuse']
+      );
+    }
     if (this.self) {
       this.drawing.drawPlayer(
           true,
@@ -175,20 +185,13 @@ Game.prototype.draw = function() {
     for (var player of this.players) {
       this.drawing.drawPlayer(
           false,
-          this.self['name'],
+          player['name'],
           this.viewport.toCanvasX(player['x']),
           this.viewport.toCanvasY(player['y']),
           player['size'],
           player['orientation'],
-          player['health']
-      );
-    }
-    for (var bomb of this.bombs) {
-      this.drawing.drawBomb(
-          this.viewport.toCanvasX(bomb['x']),
-          this.viewport.toCanvasY(bomb['y']),
-          bomb['size'],
-          bomb['fuse']
+          player['health'],
+          player['bombFuse']
       );
     }
     for (var explosion of this.explosions) {
@@ -199,5 +202,6 @@ Game.prototype.draw = function() {
           explosion['frame']
       )
     }
+    this.drawing.drawLeaderboard(this.leaderboard);
   }
 };

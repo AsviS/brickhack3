@@ -155,6 +155,19 @@ Drawing.prototype.drawExplosion = function(x, y, size, frame) {
   this.context.restore();
 };
 
+Drawing.prototype.drawLeaderboard = function(players) {
+  this.context.save();
+  this.context.textAlign = 'left';
+  this.context.font = '20px Ubuntu';
+  this.context.fillStyle = 'black';
+  this.context.fillText('Leaderboard:', 20, 40);
+  for (var i = 0; i < players.length; ++i) {
+    this.context.fillText(players[i].name + ': ' +
+        players[i].kills, 20, 60 + (20 * i));
+  }
+  this.context.restore();
+};
+
 /**
  * This function draws the background tiles on the canvas.
  * @param {number} minX The minimum canvas x coordinate to start drawing from.

@@ -46,7 +46,8 @@ io.on('connection', function(socket) {
   // Update the internal object states every time a player sends an intent
   // packet.
   socket.on('player-action', function(data) {
-    game.updatePlayer(socket.id, data.keyboardState, data.mouse, data.click);
+    game.updatePlayerOnInput(
+        socket.id, data.keyboardState, data.mouse, data.click);
   });
 
   // When a player disconnects, remove them from the game.
