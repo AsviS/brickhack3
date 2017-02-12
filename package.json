@@ -2,7 +2,7 @@
   "name": "brickhack3",
   "version": "1.0.0",
   "description": "brickhack3 project",
-  "main": "gulpfile.js",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },
