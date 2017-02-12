@@ -113,7 +113,7 @@ Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
     this.context.textAlign = 'center';
     this.context.font = '18px Ubuntu';
     this.context.fillStyle = 'red';
-    this.context.fillText(bombFuse, -35, -4);
+    this.context.fillText(bombFuse, 35, 15);
     this.context.restore();
   }
   this.context.save();
@@ -143,7 +143,7 @@ Drawing.prototype.drawBomb = function(x, y, size, timer) {
   this.context.textAlign = 'center';
   this.context.font = '20px Ubuntu';
   this.context.fillStyle = 'red';
-  this.context.fillText(Math.ceil(timer), 0, 0);
+  this.context.fillText(Math.ceil(timer), 4, 4);
   this.context.restore();
 };
 
