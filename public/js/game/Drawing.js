@@ -29,7 +29,15 @@ Drawing.BASE_IMG_URL = '/public/img/';
 Drawing.IMG_SRCS = {
   tile: 'tile.png',
   player: 'terrorist.png',
-  bomb: 'bomb.png'
+  bomb: 'bomb.png',
+  explosion: [
+    '/explosion/00.png', '/explosion/01.png', '/explosion/02.png',
+    '/explosion/03.png', '/explosion/04.png', '/explosion/05.png',
+    '/explosion/06.png', '/explosion/07.png', '/explosion/08.png',
+    '/explosion/09.png', '/explosion/10.png', '/explosion/11.png',
+    '/explosion/12.png', '/explosion/13.png', '/explosion/14.png',
+    '/explosion/15.png'
+  ]
 };
 
 /**
@@ -56,8 +64,16 @@ Drawing.BOMB_COLOR = '#c62828';
 Drawing.create = function(context) {
   var images = {};
   for (var key in Drawing.IMG_SRCS) {
-    images[key] = new Image();
-    images[key].src = Drawing.BASE_IMG_URL + Drawing.IMG_SRCS[key];
+    if (typeof(Drawing.IMG_SRCS[key]) === 'string') {
+      images[key] = new Image();
+      images[key].src = Drawing.BASE_IMG_URL + Drawing.IMG_SRCS[key];
+    } else {
+      images[key] = Drawing.IMG_SRCS[key].map((src) => {
+        var image = new Image();
+        image.src = src;
+        return image;
+      });
+    }
   }
   return new Drawing(context, images);
 };
