@@ -11,7 +11,6 @@ Sound.BASE_SOUND_URL = '/public/sound/';
 
 Sound.SOUND_SRCS = {
   shoot: [
-    'shoot1.mp3',
     'shoot2.mp3',
     'shoot3.mp3'
   ],
