@@ -1,15 +1,15 @@
 /**
- * @fileoverview Description
+ * @fileoverview Handles the drawing of game sprites onto the canvas.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 /**
  * Creates a Drawing object.
+ * @constructor
  * @param {CanvasRenderingContext2D} context The context this object will
  *   draw to.
  * @param {Object<string, Image>} images The image objects used to draw
  *   each entity.
- * @constructor
  */
 function Drawing(context, images) {
   this.context = context;
@@ -25,6 +25,10 @@ function Drawing(context, images) {
  */
 Drawing.BASE_IMG_URL = '/public/img/';
 
+/**
+ * @const
+ * @type {Object}
+ */
 Drawing.IMG_SRCS = {
   tile: 'tile.png',
   player: 'terrorist.png',
@@ -109,7 +113,6 @@ Drawing.prototype.clear = function() {
  * @param {number} y The canvas y coordinate of the player
  * @param {number} size The size of the player, corresponds to their radial
  *   hitbox
- * @return {[type]}
  */
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
   this.context.save();
