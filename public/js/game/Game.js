@@ -60,6 +60,12 @@ Game.prototype.init = function() {
   this.socket.on('update', bind(this, function(data) {
     this.receiveGameState(data);
   }));
+  this.socket.on('killed', function(victim) {
+    Materialize.toast(`You killed ${victim}!`, 2500);
+  });
+  this.socket.on('died', function(killer) {
+    Materialize.toast(`You were killed by ${killer}!`, 2500);
+  });
 };
 
 /**
