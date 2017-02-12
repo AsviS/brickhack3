@@ -16,7 +16,7 @@ Sound.SOUND_SRCS = {
     'shoot3.mp3'
   ],
   explosion: [
-    'explosion1.mp3',
+    'explosion1.wav',
     'explosion2.mp3'
   ],
   death: [
@@ -37,5 +37,5 @@ Sound.create = function() {
 Sound.prototype.play = function(sound, volume) {
   var sound = Util.choiceArray(this.sounds[sound]);
   var id = sound.play();
-  sound.volume(volume, id);
+  sound.volume(Util.bound(volume, 0, 1), id);
 };
