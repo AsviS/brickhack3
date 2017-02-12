@@ -52,7 +52,7 @@ Constants.CANVAS_HEIGHT = 600;
  * @const
  * @type {number}
  */
-Constants.FRICTION = 50;
+Constants.FRICTION = 500;
 
 if (typeof(module) === 'object') {
   /**
