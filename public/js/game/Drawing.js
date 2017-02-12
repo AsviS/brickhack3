@@ -15,7 +15,7 @@
 function Drawing(context, images) {
   this.context = context;
   /**
-   * @type {Object<string, Image>}
+   * @type {Object<string, Image|Array.<Image>>}
    */
   this.images = images;
 }
@@ -112,6 +112,11 @@ Drawing.prototype.drawBomb = function(x, y, size, timer) {
   var image = this.images['bomb'];
   this.context.drawImage(image, -size / 2, -size / 2, size, size);
   this.context.restore();
+};
+
+Drawing.prototype.drawExplosion = function(x, y, size, frame) {
+  var image = this.images['explosion'][frame];
+  this.context.drawImage(image, x, y, size, size);
 };
 
 /**

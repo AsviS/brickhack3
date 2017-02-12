@@ -71,6 +71,7 @@ Game.prototype.receiveGameState = function(state) {
   this.self = state['self'];
   this.players = state['players'];
   this.bombs = state['bombs'];
+  this.explosions = state['explosions'];
 };
 
 /**
