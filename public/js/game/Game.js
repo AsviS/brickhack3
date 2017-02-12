@@ -187,7 +187,7 @@ Game.prototype.draw = function() {
           this.viewport.toCanvasX(bomb['x']),
           this.viewport.toCanvasY(bomb['y']),
           bomb['size'],
-          bomb['timer']
+          bomb['fuse']
       );
     }
     for (var explosion of this.explosions) {
