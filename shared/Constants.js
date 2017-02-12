@@ -49,11 +49,10 @@ Constants.CANVAS_WIDTH = 800;
 Constants.CANVAS_HEIGHT = 600;
 
 /**
- * Friction coefficient
  * @const
- * @type {number}*/
-
-Constants.FRICTION = .2;
+ * @type {number}
+ */
+Constants.FRICTION = -0.2;
 
 if (typeof(module) === 'object') {
   /**
