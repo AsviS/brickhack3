@@ -7,15 +7,12 @@
 /**
  * Creates a game on the client side to manage and render the game.
  * @constructor
- * @param {Object} socket The socket connected to the server.
- * @param {Drawing} drawing The Drawing object that will render the game.
- * @param {ViewPort} viewport The ViewPort object that will manage the
- *   player's view of the entities.
  */
-function Game(socket, drawing, viewport) {
+function Game(socket, drawing, sound, viewport) {
   this.socket = socket;
 
   this.drawing = drawing;
+  this.sound = sound;
   this.viewport = viewport;
 
   this.self = null;
@@ -46,9 +43,10 @@ Game.create = function(socket, canvasElement) {
   var canvasContext = canvasElement.getContext('2d');
 
   var drawing = Drawing.create(canvasContext);
+  var sound = Sound.create();
   var viewport = Viewport.create();
 
-  var game = new Game(socket, drawing, viewport);
+  var game = new Game(socket, drawing, sound, viewport);
   game.init();
   return game;
 };
@@ -60,12 +58,13 @@ Game.prototype.init = function() {
   this.socket.on('update', bind(this, function(data) {
     this.receiveGameState(data);
   }));
-  this.socket.on('killed', function(victim) {
-    Materialize.toast(`You killed ${victim}!`, 2500);
+  this.socket.on('toast', function(message) {
+    Materialize.toast(message, 2500);
   });
-  this.socket.on('died', function(killer) {
-    Materialize.toast(`You were killed by ${killer}!`, 2500);
-  });
+  this.socket.on('sound', bind(this, function(data) {
+    this.sound.play(data.sound, data.volume);
+  }));
+
 };
 
 /**

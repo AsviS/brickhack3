@@ -4,15 +4,18 @@ html
   head
     title Bombs Away
 
+    meta(property='og:image', content='https://unsplash.it/250')
+    meta(property='og:description'
+      content='By Alvin, Dan and Karl at BrickHack 3.')
+
     link(rel='stylesheet'
       href='/public/bower/materialize/dist/css/materialize.min.css')
     link(rel='stylesheet' href='/public/css/styles.css')
-    meta(property='og:image', content='https://unsplash.it/250')
-    meta(property='og:description', content='By Alvin, Dan and Karl at BrickHack 3.')
 
     script(src='/socket.io/socket.io.js')
     script(src='/public/bower/jquery/dist/jquery.min.js')
     script(src='/public/bower/materialize/dist/js/materialize.min.js')
+    script(src='/public/bower/howler.js/dist/howler.min.js')
 
   body
     h1 Bombs Away (child-friendly)
@@ -40,5 +43,6 @@ html
     script(src='/public/js/game/Drawing.js')
     script(src='/public/js/game/Game.js')
     script(src='/public/js/game/Input.js')
+    script(src='/public/js/game/Sound.js')
     script(src='/public/js/game/Viewport.js')
     script(src='/public/js/client.js')

@@ -34,7 +34,7 @@ Constants.WORLD_MAX = 2500;
  * @const
  * @type {number}
  */
-Constants.WORLD_PADDING = 30;
+Constants.WORLD_PADDING = 40;
 
 /**
  * @const
