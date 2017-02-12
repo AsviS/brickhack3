@@ -1,7 +1,6 @@
 /**
- * Methods for drawing all the sprites onto the HTML5 canvas.
- * @author kennethli.3470@gmail.com (Kenneth Li)
- * TODO: Add explosion drawing.
+ * @fileoverview Description
+ * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 /**
@@ -46,12 +45,28 @@ Drawing.IMG_SRCS = {
  */
 Drawing.TILE_SIZE = 100;
 
+/**
+ * @const
+ * @type {string}
+ */
 Drawing.NAME_FONT = '25px Ubuntu';
 
+/**
+ * @const
+ * @type {string}
+ */
 Drawing.NAME_COLOR = 'black';
 
+/**
+ * @const
+ * @type {string}
+ */
 Drawing.BOMB_FONT = '20px Ubuntu';
 
+/**
+ * @const
+ * @type {string}
+ */
 Drawing.BOMB_COLOR = '#c62828';
 
 /**
@@ -86,6 +101,16 @@ Drawing.prototype.clear = function() {
                          Constants.CANVAS_HEIGHT);
 };
 
+/**
+ * Draws a player onto the canvas.
+ * @param {boolean} isSelf Whether or not this player is the self player
+ * @param {string} name The name of the player
+ * @param {number} x The canvas x coordinate of the player
+ * @param {number} y The canvas y coordinate of the player
+ * @param {number} size The size of the player, corresponds to their radial
+ *   hitbox
+ * @return {[type]}
+ */
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
   this.context.save();
   this.context.translate(x, y);

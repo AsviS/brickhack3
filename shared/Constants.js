@@ -49,20 +49,6 @@ Constants.CANVAS_WIDTH = 800;
 Constants.CANVAS_HEIGHT = 600;
 
 /**
- * Constants.VISIBILITY_THRESHOLD_X = (Constants.CANVAS_WIDTH / 2) + 25
- * @const
- * @type {number}
- */
-Constants.VISIBILITY_THRESHOLD_X = 425;
-
-/**
- * Constants.VISIBILITY_THRESHOLD_Y = (Constants.CANVAS_HEIGHT / 2) + 25
- * @const
- * @type {number}
- */
-Constants.VISIBILITY_THRESHOLD_Y = 325;
-
-/**
  * Friction coefficient
  * @const
  * @type {number}*/
