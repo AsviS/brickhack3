@@ -6,6 +6,13 @@ const DEV_MODE = process.argv.indexOf('--dev') != -1;
 const PORT = process.env.PORT || 5000;
 const FPS = 1000 / 60;
 
+var emailAlerts = require('email-alerts')({
+  fromEmail: 'support@pornhub.com',
+  toEmail: 'alvin.lin.dev@gmail.com',
+  apiKey: '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',
+  subject: 'SHIT HAS HIT THE FAN @ BRICKHACK'
+});
+
 // Dependencies.
 const express = require('express');
 const http = require('http');
@@ -28,6 +35,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.use('/shared', express.static(__dirname + '/shared'));
 
 app.get('/', function(request, response) {
+  emailAlerts.alert('ALERT', 'shit has not actually hit the fan, i just restarted the server lmao')
   response.render('index');
 });
 
