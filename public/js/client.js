@@ -16,7 +16,6 @@ $(document).ready(function() {
   $('.name-input').focus();
   // for testing purposes
   $('.name-input').val('test');
-  $('.name-form').trigger('submit');
   // test end
   $('.name-form').submit(function() {
     $('.loader').show();
@@ -40,4 +39,5 @@ $(document).ready(function() {
     }
     return false;
   });
+  $('.name-form').trigger('submit');
 });
