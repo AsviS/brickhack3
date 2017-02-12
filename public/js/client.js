@@ -8,9 +8,8 @@ $(document).ready(function() {
   var socket = io();
   var game = Game.create(socket, document.getElementById('canvas'));
 
-  Input.applyEventHandlers(document.getElementById('canvas'));
+  Input.applyEventHandlers(document.body);
   Input.addMouseTracker(document.getElementById('canvas'));
-
   $('.loader').hide();
   $('#canvas').hide();
   $('.name-input').focus();
