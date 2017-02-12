@@ -40,6 +40,12 @@ Drawing.TILE_SIZE = 100;
 
 Drawing.NAME_FONT = '25px Ubuntu';
 
+Drawing.NAME_COLOR = 'black';
+
+Drawing.BOMB_FONT = '20px Ubuntu';
+
+Drawing.BOMB_COLOR = '#c62828';
+
 /**
  * Factory method for creating a Drawing object. It initializes all the
  * necessary Image objects.
@@ -67,17 +73,26 @@ Drawing.prototype.clear = function() {
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size) {
   this.context.save();
   this.context.translate(x, y);
+
   this.context.textAlign = 'center';
   this.context.font = Drawing.NAME_FONT;
+  this.context.fillStyle = Drawing.NAME_COLOR;
   this.context.fillText(name, 0, -50);
+
   var image = this.images['player'];
   this.context.drawImage(image, -size / 2, -size / 2, size, size);
   this.context.restore();
 };
 
-Drawing.prototype.drawBomb = function(name, x, y, size) {
+Drawing.prototype.drawBomb = function(name, x, y, size, timer) {
   this.context.save();
   this.context.translate(x, y);
+
+  this.context.textAlign = 'center';
+  this.context.font = Drawing.BOMB_FONT;
+  this.context.fillStyle = Drawing.BOMB_COLOR;
+  this.context.fillText(timer);
+
   var image = this.images['bomb'];
   this.context.drawImage(image, -size / 2, -size / 2, size, size);
   this.context.restore();
