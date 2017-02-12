@@ -16,7 +16,7 @@ $(document).ready(function() {
   $('.name-input').focus();
   // for testing purposes
   $('.name-input').val('test');
-  $('.name-input').trigger('submit');
+  $('.name-form').trigger('submit');
   // test end
   $('.name-form').submit(function() {
     $('.loader').show();
