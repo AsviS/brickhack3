@@ -130,12 +130,12 @@ Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation) {
 Drawing.prototype.drawBomb = function(x, y, size, timer) {
   this.context.save();
   this.context.translate(x, y);
+  var image = this.images['bomb'];
+  this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.textAlign = 'center';
   this.context.font = Drawing.BOMB_FONT;
   this.context.fillStyle = Drawing.BOMB_COLOR;
   this.context.fillText(timer, 0, 0);
-  var image = this.images['bomb'];
-  this.context.drawImage(image, -size, -size, size * 2, size * 2);
   this.context.restore();
 };
 
