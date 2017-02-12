@@ -14,6 +14,9 @@ $(document).ready(function() {
   $('.loader').hide();
   $('#canvas').hide();
   $('.name-input').focus();
+  // for testing purposes
+  $('.name-input').val('test');
+  // test end
   $('.name-form').submit(function() {
     $('.loader').show();
     var name = $('.name-input').val().trim();
@@ -36,4 +39,5 @@ $(document).ready(function() {
     }
     return false;
   });
+  $('.name-form').trigger('submit');
 });
