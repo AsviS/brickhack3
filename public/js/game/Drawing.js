@@ -31,8 +31,10 @@ Drawing.BASE_IMG_URL = '/public/img/';
  */
 Drawing.IMG_SRCS = {
   tile: 'tile.png',
-  player: 'terrorist.png',
+  selfPlayer: 'selfPlayer.png',
+  otherPlayer: 'otherPlayer.png',
   bomb: 'bomb.png',
+  blood: 'blood.png',
   explosion: [
     '/explosion/00.png', '/explosion/01.png', '/explosion/02.png',
     '/explosion/03.png', '/explosion/04.png', '/explosion/05.png',
@@ -116,26 +118,41 @@ Drawing.prototype.clear = function() {
  */
 Drawing.prototype.drawPlayer = function(isSelf, name, x, y, size, orientation,
                                         health) {
+  if (health <= 0) {
+    this.context.save();
+    this.context.translate(x, y);
+    var image = this.images['blood'];
+    this.context.drawImage(image, -size, -size, size * 2, size * 2);
+    this.context.restore();
+  } else {
+    this.context.save();
+    this.context.translate(x, y);
+    this.context.rotate(orientation + Math.PI / 2);
+    if (isSelf) {
+      var image = this.images['selfPlayer'];
+    } else {
+      var image = this.images['otherPlayer'];
+    }
+    this.context.drawImage(image, -size, -size, size * 2, size * 2);
+    this.context.restore();
+  }
   this.context.save();
   this.context.translate(x, y);
   for (var i = 0; i < 10; i++) {
     if (i < health) {
       this.context.fillStyle = 'green';
-      this.context.fillRect(-25 + 5 * i, -size, 5, 4);
+      this.context.fillRect(-25 + 5 * i, -50, 5, 4);
     } else {
       this.context.fillStyle = 'red';
-      this.context.fillRect(-25 + 5 * i, -size, 5, 4);
+      this.context.fillRect(-25 + 5 * i, -50, 5, 4);
     }
   }
   this.context.textAlign = 'center';
   this.context.font = Drawing.NAME_FONT;
   this.context.fillStyle = Drawing.NAME_COLOR;
-  this.context.fillText(name, 0, -50);
-  
-  this.context.rotate(orientation + Math.PI / 2);
-  var image = this.images['player'];
-  this.context.drawImage(image, -size, -size, size * 2, size * 2);
+  this.context.fillText(name, 0, -60);
   this.context.restore();
+
 };
 
 Drawing.prototype.drawBomb = function(x, y, size, timer) {
@@ -170,7 +187,7 @@ Drawing.prototype.drawTiles = function(minX, minY, maxX, maxY) {
   var tile = this.images['tile'];
   for (var x = minX; x < maxX; x += Drawing.TILE_SIZE) {
     for (var y = minY; y < maxY; y += Drawing.TILE_SIZE) {
-      this.context.drawImage(tile, x, y);
+      this.context.drawImage(tile, x, y, Drawing.TILE_SIZE, Drawing.TILE_SIZE);
     }
   }
   this.context.restore();

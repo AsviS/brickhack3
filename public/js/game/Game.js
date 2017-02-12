@@ -110,7 +110,9 @@ Game.prototype.update = function() {
         up: Input.UP,
         right: Input.RIGHT,
         down: Input.DOWN,
-        left: Input.LEFT
+        left: Input.LEFT,
+        longerFuse: Input.MISC_KEYS[69],
+        shorterFuse: Input.MISC_KEYS[81]
       },
       mouse: this.viewport.toWorldCoords.apply(this.viewport, Input.MOUSE),
       click: Input.LEFT_CLICK,
