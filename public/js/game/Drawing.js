@@ -31,7 +31,7 @@ Drawing.BASE_IMG_URL = '/public/img/';
  */
 Drawing.IMG_SRCS = {
   tile: 'tile.png',
-  player: 'terrorist.png',
+  player: 'man.png',
   bomb: 'bomb.png',
   explosion: [
     '/explosion/00.png', '/explosion/01.png', '/explosion/02.png',
