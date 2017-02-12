@@ -69,7 +69,7 @@ Constants.VISIBILITY_THRESHOLD_Y = 325;
 
 Constants.FRICTION = .2;
 
-if (typeof module === 'object') {
+if (typeof(module) === 'object') {
   /**
    * If Constants is loaded as a Node module, then this line is called.
    */

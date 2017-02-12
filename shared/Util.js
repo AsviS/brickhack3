@@ -147,7 +147,7 @@ Util.choiceArray = function(array) {
   return array[Util.randRangeInt(0, array.length)];
 };
 
-if (typeof module === 'object') {
+if (typeof(module) === 'object') {
   /**
    * If Util is loaded as a Node module, then this line is called.
    */

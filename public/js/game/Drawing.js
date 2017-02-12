@@ -70,7 +70,7 @@ Drawing.create = function(context) {
     } else {
       images[key] = Drawing.IMG_SRCS[key].map((src) => {
         var image = new Image();
-        image.src = src;
+        image.src = Drawing.BASE_IMG_URL + src;
         return image;
       });
     }
